@@ -1,5 +1,188 @@
 @charset "utf-8";
+<<<<<<< HEAD
 
 h1 {
   color: red;
 }
+=======
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow:hidden;
+}
+
+a {
+    list-style: none;
+    text-decoration: none;
+}
+
+body {
+    background: white;
+}
+
+header {
+    border-bottom: 1px solid grey;
+}
+
+nav {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+    margin: 2rem;
+    gap: 1.5rem;
+}
+
+nav img {
+    width: 3rem;
+    height: auto;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 35% 65%;
+    margin: 2rem;
+}
+
+.left {
+    height: 100%;
+    padding-right: 2rem;
+}
+
+.search-bar {
+padding: 10px;
+border-bottom: 1px solid grey;
+margin-bottom: 10px; /* Add margin to create space between the search bar and the robots */
+}
+
+.leftItem {
+margin-bottom: 10px; /* Add margin to create space between each robot */
+}
+
+
+.left__robotContainer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.leftItem:hover {
+    background: white;
+}
+
+.right {
+    width: 90%;
+    margin-inline: auto;
+}
+.containerRightTitle {
+  border: 1px solid grey;
+  border-radius: 10px 10px 0px 0px;
+padding-bottom: 1rem;
+background-color: lightblue;
+padding-top: 1rem;
+display: flex; 
+align-items: center; 
+padding-left: 1rem;
+}
+
+.chatbox {
+  border-radius: 0px 0px 10px 10px;
+  border: 1px solid grey;
+height: 60vh;
+width: 100%; 
+background: #E3F1FD;
+overflow-y: auto;
+padding: 10px;
+}
+
+
+
+.chatbox li {
+    list-style: none;
+    margin-bottom: 10px;
+}
+
+.myTurn .message-container {
+    align-items: flex-end; /* Align user's message container to the right */
+}
+
+.botTurn .message-container {
+    align-items: flex-start; /* Align bot's message container to the left */
+}
+
+.message-container {
+    display: flex;
+    flex-direction: column; /* Stack timestamp below message */
+    align-items: flex-start; /* Align items to the start (left) */
+}
+
+.message {
+    display: inline-block;
+    padding: 10px 15px;
+    border-radius: 20px;
+    max-width: 70%; /* Set maximum width to avoid message container expanding */
+}
+
+.botTurn .message {
+    background-color: #e5e5ea; /* Bot's message bubble color */
+}
+
+.myTurn .message {
+    background-color: #dcf8c6; /* User's message bubble color */
+}
+
+.timestamp {
+    font-size: 0.8rem;
+    color: #666; /* Timestamp color */
+    margin-top: 5px; /* Add some space between message and timestamp */
+}
+
+.containertextarea {
+    display: flex;
+    align-items: center;
+}
+
+.input {
+
+  width: 100%;
+
+}
+
+/* Styles for the robot icon bubble */
+.robot-icon {
+    width: 40px; /* Adjust as needed */
+    height: 40px; /* Adjust as needed */
+    background-color: #e5e5ea; /* Background color of the bubble */
+    border-radius: 50%; /* Make it a circle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Hide overflow if image exceeds the bubble size */
+}
+
+.robot-icon img {
+    max-width: 100%; /* Ensure the image doesn't exceed the bubble size */
+    max-height: 100%; /* Ensure the image doesn't exceed the bubble size */
+}
+
+.bot-container {
+  background: #E3F1FD;
+border: 1px solid grey; /* Add border to create the box */
+border-radius: 10px; /* Add border radius for rounded corners */
+padding: 10px; /* Add padding for better spacing */
+height: 100%; /* Extend the height to occupy the full height of its parent */
+}
+
+.robot-name {
+font-size: 1rem; /* Set font size smaller */
+}
+
+.footer {
+height: 100%;
+}
+
+>>>>>>> c0d871a (v1)

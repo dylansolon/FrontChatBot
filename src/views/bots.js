@@ -1,4 +1,6 @@
-export default ({ id, img, nom, msg }) => (`
+export default ({
+  id, img, nom, msg
+}) => (`
   <div class="leftItem" id="${id}">
     <div class="left__robotContainer">
       <div class="robot-icon">

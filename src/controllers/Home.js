@@ -1,5 +1,5 @@
 import viewHeader from '../views/header';
-import viewBots from '../views/list-bots';
+import viewBots from '../views/liste-bots';
 import viewChatbox from '../views/chatbox';
 
 const Home = class {
@@ -13,10 +13,10 @@ const Home = class {
 
   render() {
     return `
-      ${viewHeader()}
+        ${viewHeader()}
       <main>
-          ${viewBots()}
-          ${viewChatbox()}
+        ${viewBots()}
+        ${viewChatbox()}
       </main>
     `;
   }

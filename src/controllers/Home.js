@@ -46,7 +46,6 @@ const Home = class {
   sendMessage(chatbox, messageInput, event) {
     const chatboxValue = chatbox;
     const messageInputValue = messageInput;
-
     const message = messageInputValue.value.trim();
     if (message !== '') {
       const now = new Date();
@@ -61,7 +60,8 @@ const Home = class {
       `;
       chatboxValue.innerHTML += newMessage;
       messageInputValue.value = '';
-
+      event.preventDefault();
+    } else {
       event.preventDefault();
     }
   }

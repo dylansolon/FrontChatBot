@@ -194,9 +194,28 @@ height: 100%;
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> c0d871a (v1)
 =======
+=======
+.chatbox .containertextarea {
+  display: flex;
+  align-items: end;
+}
+
+.containertextarea {
+  width: 100%;
+  display: flex;
+  gap: 5px;
+  background: white;
+  padding: 5px 20px;
+  border-top: 1px solid #ccc;
+}
+
+>>>>>>> fcc72f0 (chatbox en cours de modif)
 .containertextarea textarea {
+display: flex;
+align-items: end;
   height: 55px;
   width: 100%;
   border: none;

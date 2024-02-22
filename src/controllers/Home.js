@@ -13,18 +13,10 @@ const Home = class {
 
   render() {
     return `
-      <div class="container">
-        <div class="row">
-          <div class="col-12">${viewHeader()}</div>
-        </div>
-        <main>
-        <div class="row">
-          <div class="col-3">${viewBots()}</div>
-        </div>
-        <div class="row">
-          <div class="col-9">${viewChatbox()}</div>
-        </div>
-      </div>
+          ${viewHeader()}
+      <main>
+          ${viewBots()}
+          ${viewChatbox()}
       </main>
     `;
   }

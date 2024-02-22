@@ -15,13 +15,21 @@ h1 {
     overflow:hidden;
 }
 
+header {
+  background-color: #23252f;
+}
+
+header h1 {
+  color: white;
+}
+
 a {
     list-style: none;
     text-decoration: none;
 }
 
 body {
-    background: white;
+    background: #23252f;
 }
 
 header {
@@ -82,7 +90,7 @@ margin-bottom: 10px; /* Add margin to create space between each robot */
   border: 1px solid grey;
   border-radius: 10px 10px 0px 0px;
 padding-bottom: 1rem;
-background-color: lightblue;
+background-color: #c9c9ff;
 padding-top: 1rem;
 display: flex; 
 align-items: center; 
@@ -94,7 +102,7 @@ padding-left: 1rem;
   border: 1px solid grey;
 height: 60vh;
 width: 100%; 
-background: #E3F1FD;
+background: #eafff4;
 overflow-y: auto;
 padding: 10px;
 }
@@ -132,7 +140,7 @@ padding: 10px;
 }
 
 .myTurn .message {
-    background-color: #dcf8c6; /* User's message bubble color */
+    background-color: #5AC7FF; /* User's message bubble color */
 }
 
 .timestamp {
@@ -156,7 +164,7 @@ padding: 10px;
 .robot-icon {
     width: 40px; /* Adjust as needed */
     height: 40px; /* Adjust as needed */
-    background-color: #e5e5ea; /* Background color of the bubble */
+    background-color: white; /* Background color of the bubble */
     border-radius: 50%; /* Make it a circle */
     display: flex;
     justify-content: center;
@@ -170,7 +178,7 @@ padding: 10px;
 }
 
 .bot-container {
-  background: #E3F1FD;
+  background: #dcf0fa;
 border: 1px solid grey; /* Add border to create the box */
 border-radius: 10px; /* Add border radius for rounded corners */
 padding: 10px; /* Add padding for better spacing */

@@ -1,20 +1,8 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-import toto from './toto.png';
-=======
-import toto from './views/img/toto.jpg';
-import robot from './views/img/robot.png';
-import naruto from './views/img/naruto.jpg';
->>>>>>> c0d871a (v1)
+import toto from '../assets/img/toto.jpg';
+import robot from '../assets/img/robot.png';
+import naruto from '../assets/img/naruto.jpg';
 
-import './index.scss';
-
-document.body.innerHTML = `
-<<<<<<< HEAD
-<h1>Hello Toto !</h1>
-<h2>dylan</h2>
-<img width="300" src="${toto}" alt="toto">
-=======
+export default () => (`
 <header>
     <nav>
         <img src="robot.png" alt=""/>
@@ -87,22 +75,4 @@ document.body.innerHTML = `
               </div>
     </section>
 </main>
->>>>>>> c0d871a (v1)
-`;
-=======
-import Router from './Router';
-import Search from './controllers/Search';
-import Home from './controllers/Home';
-
-import './index.scss';
-
-const routes = [{
-  url: '/',
-  controller: Home
-}, {
-  url: '/search',
-  controller: Search
-}];
-
-new Router(routes);
->>>>>>> c20d88e (Router)
+`);

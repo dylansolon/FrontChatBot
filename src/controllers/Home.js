@@ -1,4 +1,6 @@
-import viewPage from '../views/page';
+import viewHeader from '../views/header';
+import viewBots from '../views/bots';
+import viewChatbox from '../views/chatbox';
 
 const Home = class {
   constructor(params, pageView) {
@@ -10,8 +12,21 @@ const Home = class {
   }
 
   render() {
-    return viewPage(`
-    `);
+    return `
+      <div class="container">
+        <div class="row">
+          <div class="col-12">${viewHeader()}</div>
+        </div>
+        <main>
+        <div class="row">
+          <div class="col-3">${viewBots()}</div>
+        </div>
+        <div class="row">
+          <div class="col-9">${viewChatbox()}</div>
+        </div>
+      </div>
+      </main>
+    `;
   }
 
   run() {

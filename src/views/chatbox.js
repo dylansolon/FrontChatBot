@@ -19,9 +19,9 @@ export default () => (`
                     </div>
                 </li>
             </ul>
-              <div class="containertextarea">
-                  <input placeholder="Write here..." type="text" class="input">
-                  <a href="" class="send"><i class="ri-send-plane-fill"></i></a>
-              </div>
+            <div class="containertextarea">
+            <textarea placeholder="Write here..." type="text" class="input"></textarea>
+            <i class="ri-send-plane-fill"></i>
+            </div>
     </section>
 `);

@@ -20,8 +20,9 @@ export default () => (`
                 </li>
             </ul>
             <div class="containertextarea">
-            <textarea placeholder="Write here..." type="text" class="input"></textarea>
-            <i class="ri-send-plane-fill"></i>
+                <textarea id="messageInput" placeholder="Write here..." type="text" class="input"></textarea>
+                <i id="sendButton" class="ri-send-plane-fill"></i>
             </div>
+        </div>
     </section>
 `);

@@ -1,10 +1,20 @@
-import icon from '../assets/img/robot.png';
+import Icon from '../assets/img/robot.png';
+import Left from '../assets/img/noctali.png';
+import Right from '../assets/img/gengar.png';
 
 export default () => (`
 <header>
     <nav>
-        <img src="${icon}" alt="Icon Header"/>
-        <h1>Chatbot.io</h1>
+      <div class="logo-container">
+          <img src="${Left}" class="logo" alt="Left Picture"/>
+      </div>
+      <div class="center-content">
+          <img src="${Icon}" alt="Icon Header"/>
+          <h1><span>PokeBot.io</span></h1>
+      </div>
+      <div class="logo-container">
+          <img src="${Right}" class="logo" alt="Right Picture"/>
+      </div>
     </nav>
 </header>
 `);

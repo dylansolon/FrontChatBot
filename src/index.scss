@@ -15,39 +15,67 @@ h1 {
   overflow: hidden;
 }
 
-header {
-  background-color: #23252f;
-}
-
-header h1 {
-  color: white;
-}
-
 a {
   list-style: none;
   text-decoration: none;
 }
 
 body {
-  background: #23252f;
+  background-image: url('https://images6.alphacoders.com/420/420248.jpg');
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 header {
-  border-bottom: 1px solid grey;
+  background-color: #79CAF9; /* Couleur de fond inspirée par Pokemon */
+  padding: 20px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 70px; /* Ajustez la largeur selon vos besoins */
+  margin-right: 10px; /* Espacement entre les logos */
+}
+
+.nav-content {
+  display: flex;
+  align-items: center;
 }
 
 nav {
-  width: 100%;
   display: flex;
   align-items: center;
-  font-size: 2rem;
-  margin: 2rem;
-  gap: 1.5rem;
+  justify-content: space-between; /* Espace égal entre les éléments */
 }
 
 nav img {
-  width: 3rem;
-  height: auto;
+  height: 50px; /* Ajustez la taille selon vos besoins */
+}
+
+nav img.Poke {
+  height: 70px; /* Ajustez la hauteur selon vos besoins */
+}
+
+.center-content {
+  display: flex;
+  align-items: center;
+  gap: 0.5cm; /* Ajout d'un espacement d'environ 0.5 cm entre les éléments */
+}
+
+header h1 {
+  font-family: 'Arial', sans-serif; /* Utilisez une police similaire à celle de Pokémon */
+  font-size: 36px; /* Taille du texte */
+  margin: 0; /* Supprimer les marges par défaut */
+}
+
+header h1 span {
+  -webkit-text-fill-color: #FFCC01; /* Couleur de remplissage du texte */
+  -webkit-text-stroke-width: 2px; /* Largeur de la bordure autour du texte */
+  -webkit-text-stroke-color: #385BA9; /* Couleur de la bordure autour du texte */
 }
 
 main {
@@ -65,14 +93,12 @@ main {
   padding: 10px;
   border-bottom: 1px solid grey;
   margin-bottom: 10px;
-  /* Add margin to create space between the search bar and the robots */
 }
 
 .leftItem {
   margin-bottom: 10px;
   /* Add margin to create space between each robot */
 }
-
 
 .left__robotContainer {
   display: flex;
@@ -107,8 +133,6 @@ main {
   overflow-y: auto;
   padding: 10px;
 }
-
-
 
 .chatbox li {
   list-style: none;
@@ -184,7 +208,7 @@ main {
 }
 
 .bot-container {
-  background: #dcf0fa;
+  background: #eafff4;
   /* Add border to create the box */
   border-radius: 10px;
   /* Add border radius for rounded corners */
@@ -254,8 +278,12 @@ height: 100%;
 
 .containertextarea textarea:valid~i {
   visibility: visible;
+<<<<<<< HEAD
 }
 <<<<<<< HEAD
 >>>>>>> bb30f46 (modif page.js)
 =======
 >>>>>>> a7c8fc5 (modif chatbox)
+=======
+}
+>>>>>>> a273b0b (Modification sur l'interface + CSS)

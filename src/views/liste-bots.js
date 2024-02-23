@@ -24,7 +24,6 @@ const bots = [
 export default () => (`
 <section class="left">
 <div class="bot-container">
-    <!-- Search bar -->
     <div class="search-bar">
         <input type="text" placeholder="Search...">
     </div>

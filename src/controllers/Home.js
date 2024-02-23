@@ -64,11 +64,11 @@ const Home = class {
       messageInputValue.value = '';
 
       const lowercaseMessage = message.toLowerCase();
-      if (lowercaseMessage === 'pierre') {
+      if (lowercaseMessage.includes('pierre')) {
         this.botRespond("Pierre est le leader de l'arène d'Argenta !", timestamp);
-      } else if (lowercaseMessage === 'ondine') {
+      } else if (lowercaseMessage.includes('ondine')) {
         this.botRespond("Ondine dirige l'arène d'Azuria.", timestamp);
-      } else if (lowercaseMessage === 'major bob') {
+      } else if (lowercaseMessage.includes('major bob')) {
         this.botRespond('Tu dois te rendre à Carmin sur Mer !', timestamp);
       }
 

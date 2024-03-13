@@ -10,7 +10,7 @@ const bots = [
   {
     id: 2,
     img: 'https://bricashirts.com/14455-large_default/tee-shirt-pokemon-salameche-blanc-sublimation.jpg',
-    nom: 'Salameche',
+    nom: 'Salameche SIUUUUUUUU',
     msg: 'Previous message'
   },
   {

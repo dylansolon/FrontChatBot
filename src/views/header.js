@@ -1,4 +1,4 @@
-import Icon from '../assets/img/robot.png';
+import Icon from '../assets/img/logo.png';
 import Left from '../assets/img/noctali.png';
 import Right from '../assets/img/gengar.png';
 

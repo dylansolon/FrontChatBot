@@ -1,6 +1,6 @@
 export default () => (`
-    <section class="right">
-        <div class="containerRight" id="conv1">
+  <section class="right">
+      <div class="containerRight" id="conv1">
             <div class="containerRightTitle">
                 <h1>Nom du bot</h1>
             </div>

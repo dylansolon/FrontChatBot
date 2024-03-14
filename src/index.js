@@ -91,13 +91,13 @@ document.body.innerHTML = `
 `;
 =======
 import Router from './Router';
-import Home from './controllers/Home';
+import Pokebot from './controllers/pokebot';
 
 import './index.scss';
 
 const routes = [{
   url: '/',
-  controller: Home
+  controller: Pokebot
 }];
 
 new Router(routes);

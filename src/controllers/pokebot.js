@@ -1,5 +1,7 @@
+import axios from 'axios';
+
 import viewHeader from '../views/header';
-import viewBots from '../views/liste-bots';
+import viewBots from '../views/listebots';
 import viewChatbox from '../views/chatbox';
 
 const Home = class {
@@ -21,7 +23,7 @@ const Home = class {
     `;
   }
 
-  run() {
+  async run() {
     const content = this.render();
     this.el.innerHTML = content;
     this.setupEventListeners();
@@ -43,7 +45,7 @@ const Home = class {
     });
   }
 
-  sendMessage(chatbox, messageInput, event) {
+  async sendMessage(chatbox, messageInput, event) {
     const chatboxValue = chatbox;
     const messageInputValue = messageInput;
 
@@ -54,28 +56,48 @@ const Home = class {
 
       const newMessage = `
         <li class="myTurn">
-            <div class="message-container">
-                <span class="message">${message}</span>
-                <span class="timestamp">${timestamp}</span>
-            </div>
+          <div class="message-container">
+            <span class="message">${message}</span>
+            <span class="timestamp">${timestamp}</span>
+          </div>
         </li>
       `;
       chatboxValue.innerHTML += newMessage;
       messageInputValue.value = '';
 
       const lowercaseMessage = message.toLowerCase();
-      if (lowercaseMessage.includes('pierre')) {
-        this.botRespond("Pierre est le leader de l'arène d'Argenta !", timestamp);
-      } else if (lowercaseMessage.includes('ondine')) {
-        this.botRespond("Ondine dirige l'arène d'Azuria.", timestamp);
-      } else if (lowercaseMessage.includes('major bob')) {
-        this.botRespond('Tu dois te rendre à Carmin sur Mer !', timestamp);
-      }
+
+      const responses = {
+        pierre: "Pierre est le leader de l'arène d'Argenta !",
+        ondine: "Ondine dirige l'arène d'Azuria.",
+        'major bob': 'Tu dois te rendre à Carmin sur Mer !',
+        50: async () => {
+          const pokemonList = await this.fetchPokemonList();
+          const pokemonNames = pokemonList.results.map((pokemon) => pokemon.name).slice(0, 50).join(', ');
+          const botResponse = `Les 50 premiers Pokémon de la première génération sont : ${pokemonNames}`;
+          this.botRespond(botResponse, timestamp);
+        }
+      };
+
+      Object.keys(responses).forEach((keyword) => {
+        if (lowercaseMessage.includes(keyword)) {
+          if (typeof responses[keyword] === 'function') {
+            responses[keyword]();
+          } else {
+            this.botRespond(responses[keyword], timestamp);
+          }
+        }
+      });
 
       event.preventDefault();
     } else {
       event.preventDefault();
     }
+  }
+
+  async fetchPokemonList() {
+    const response = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=151');
+    return response.data;
   }
 
   botRespond(response, timestamp) {

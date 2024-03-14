@@ -88,6 +88,8 @@ const Home = class {
         }
       });
 
+      this.scrollChatboxToBottom();
+
       event.preventDefault();
     } else {
       event.preventDefault();
@@ -124,6 +126,13 @@ const Home = class {
       </li>
     `;
     chatboxValue.innerHTML += botResponse;
+
+    this.scrollChatboxToBottom();
+  }
+
+  scrollChatboxToBottom() {
+    const chatbox = document.querySelector('.chatbox');
+    chatbox.scrollTop = chatbox.scrollHeight;
   }
 };
 

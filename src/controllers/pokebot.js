@@ -72,10 +72,9 @@ const Home = class {
         ondine: "Ondine dirige l'arène d'Azuria.",
         'major bob': 'Tu dois te rendre à Carmin sur Mer !',
         50: async () => {
-          const pokemonList = await this.fetchPokemonList();
-          const pokemonNames = pokemonList.results.map((pokemon) => pokemon.name).slice(0, 50).join(', ');
-          const botResponse = `Les 50 premiers Pokémon de la première génération sont : ${pokemonNames}`;
-          this.botRespond(botResponse, timestamp);
+          const pokemonNames = await this.fetchPokemonNames();
+          const formattedNames = pokemonNames.join(', ');
+          this.botRespond(`Les 50 premiers Pokémon de la première génération en français sont : ${formattedNames}`, timestamp);
         }
       };
 
@@ -95,9 +94,22 @@ const Home = class {
     }
   }
 
-  async fetchPokemonList() {
-    const response = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=151');
-    return response.data;
+  async fetchPokemonNames() {
+    const pokemonNames = [];
+    const requests = [];
+
+    for (let i = 1; i <= 50; i += 1) {
+      requests.push(axios.get(`https://pokeapi.co/api/v2/pokemon-species/${i}`));
+    }
+
+    const responses = await Promise.all(requests);
+
+    responses.forEach((response) => {
+      const pokemonName = response.data.names.find((name) => name.language.name === 'fr').name;
+      pokemonNames.push(pokemonName);
+    });
+
+    return pokemonNames;
   }
 
   botRespond(response, timestamp) {

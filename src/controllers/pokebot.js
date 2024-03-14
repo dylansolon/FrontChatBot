@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import viewHeader from '../views/header';
-import viewBots from '../views/listebots';
+import viewBots, { bots } from '../views/listebots';
 import viewChatbox from '../views/chatbox';
 
 const Home = class {
@@ -68,23 +68,38 @@ const Home = class {
       const lowercaseMessage = message.toLowerCase();
 
       const responses = {
-        pierre: "Pierre est le leader de l'arène d'Argenta !",
-        ondine: "Ondine dirige l'arène d'Azuria.",
-        'major bob': 'Tu dois te rendre à Carmin sur Mer !',
-        50: async () => {
-          const pokemonNames = await this.fetchPokemonNames();
-          const formattedNames = pokemonNames.join(', ');
-          this.botRespond(`Les 50 premiers Pokémon de la première génération en français sont : ${formattedNames}`, timestamp);
+        bonjour: {
+          message: 'Ohayo Gozaimasu !',
+          botIds: [1, 2, 3]
+        },
+        pierre: {
+          message: "Pierre est le leader de l'arène d'Argenta !",
+          botIds: [1]
+        },
+        ondine: {
+          message: "Ondine dirige l'arène d'Azuria.",
+          botIds: [2]
+        },
+        'major bob': {
+          message: 'Tu dois te rendre à Carmin sur Mer !',
+          botIds: [3]
+        },
+        50: {
+          message: async () => {
+            const pokemonNames = await this.fetchPokemonNames();
+            const formattedNames = pokemonNames.join(', ');
+            this.botRespond(`Les 50 premiers Pokémon de la première génération en français sont : ${formattedNames}`, timestamp);
+          },
+          botIds: [1]
         }
       };
 
       Object.keys(responses).forEach((keyword) => {
         if (lowercaseMessage.includes(keyword)) {
-          if (typeof responses[keyword] === 'function') {
-            responses[keyword]();
-          } else {
-            this.botRespond(responses[keyword], timestamp);
-          }
+          const { message1, botIds } = responses[keyword];
+          botIds.forEach(botId => {
+            this.botRespond(message1, timestamp, botId);
+          });
         }
       });
 
@@ -114,11 +129,12 @@ const Home = class {
     return pokemonNames;
   }
 
-  botRespond(response, timestamp) {
+  botRespond(response, timestamp, botId) {
     const chatboxValue = document.querySelector('.chatbox');
+    const botName = bots.find(bot => bot.id === botId).nom;
     const botResponse = `
       <li class="botTurn">
-        <h2 class="robot-name" style="font-size: 0.8rem;">Bot-one</h2>
+        <h2 class="robot-name" style="font-size: 0.8rem;">${botName}</h2>
         <div class="message-container">
           <span class="message">${response}</span>
           <span class="timestamp">${timestamp}</span>

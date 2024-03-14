@@ -1,6 +1,6 @@
 import bot from './bots';
 
-const bots = [
+export const bots = [
   {
     id: 1,
     img: 'https://www.goodstickers.fr/4589/pokemon-bulbasaur.jpg',
@@ -10,7 +10,7 @@ const bots = [
   {
     id: 2,
     img: 'https://bricashirts.com/14455-large_default/tee-shirt-pokemon-salameche-blanc-sublimation.jpg',
-    nom: 'Salameche SIUUUUUUUU',
+    nom: 'Salameche',
     msg: 'Previous message'
   },
   {
@@ -21,7 +21,7 @@ const bots = [
   }
 ];
 
-export default () => (`
+const createListBotHTML = () => (`
 <section class="left">
 <div class="bot-container">
     <div class="search-bar">
@@ -32,3 +32,5 @@ export default () => (`
     </div>
 </section>
 `);
+
+export default createListBotHTML;

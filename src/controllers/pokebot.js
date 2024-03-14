@@ -96,9 +96,9 @@ const Home = class {
 
       Object.keys(responses).forEach((keyword) => {
         if (lowercaseMessage.includes(keyword)) {
-          const { message1, botIds } = responses[keyword];
+          const { message, botIds } = responses[keyword];
           botIds.forEach(botId => {
-            this.botRespond(message1, timestamp, botId);
+            this.botRespond(message, timestamp, botId);
           });
         }
       });

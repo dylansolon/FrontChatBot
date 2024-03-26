@@ -2,7 +2,7 @@ export default () => (`
   <section class="right">
       <div class="containerRight" id="conv1">
             <div class="containerRightTitle">
-                <h1>Nom du bot</h1>
+                <h1>Chatbot</h1>
             </div>
             <ul class="chatbox">
             </ul>

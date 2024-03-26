@@ -4,6 +4,15 @@ import viewHeader from '../views/header';
 import viewBots, { bots } from '../views/listebots';
 import viewChatbox from '../views/chatbox';
 
+async function fetchMessage() {
+  try {
+    const response = await axios.get('http://localhost/messages');
+    return response.data;
+  } catch (error) {
+    return null;
+  }
+}
+
 const Home = class {
   constructor(params, pageView) {
     this.el = document.querySelector('#root');
@@ -49,15 +58,15 @@ const Home = class {
     const chatboxValue = chatbox;
     const messageInputValue = messageInput;
 
-    const message = messageInputValue.value.trim();
-    if (message !== '') {
+    const userMessage = messageInputValue.value.trim();
+    if (userMessage !== '') {
       const now = new Date();
       const timestamp = `${now.getHours()}:${String(now.getMinutes()).padStart(2, '0')} ${now.getDate()}/${now.getMonth() + 1}/${now.getFullYear()}`;
 
       const newMessage = `
         <li class="myTurn">
           <div class="message-container">
-            <span class="message">${message}</span>
+            <span class="message">${userMessage}</span>
             <span class="timestamp">${timestamp}</span>
           </div>
         </li>
@@ -65,45 +74,40 @@ const Home = class {
       chatboxValue.innerHTML += newMessage;
       messageInputValue.value = '';
 
-      const lowercaseMessage = message.toLowerCase();
+      const lowercaseMessage = userMessage.toLowerCase();
+
+      const { bonjour } = await fetchMessage();
+      const { pierre } = await fetchMessage();
+      const { ondine } = await fetchMessage();
+      const { majorBob } = await fetchMessage();
 
       const responses = {
         bonjour: {
-          message: 'Ohayo Gozaimasu !',
+          message: bonjour,
           botIds: [1, 2, 3]
         },
         pierre: {
-          message: "Pierre est le leader de l'arène d'Argenta !",
+          message: pierre,
           botIds: [1]
         },
         ondine: {
-          message: "Ondine dirige l'arène d'Azuria.",
+          message: ondine,
           botIds: [2]
         },
         'major bob': {
-          message: 'Tu dois te rendre à Carmin sur Mer !',
+          message: majorBob,
           botIds: [3]
-        },
-        50: {
-          message: async () => {
-            const pokemonNames = await this.fetchPokemonNames();
-            const formattedNames = pokemonNames.join(', ');
-            this.botRespond(`Les 50 premiers Pokémon de la première génération en français sont : ${formattedNames}`, timestamp);
-          },
-          botIds: [1]
         }
       };
 
       Object.keys(responses).forEach((keyword) => {
         if (lowercaseMessage.includes(keyword)) {
           const { message, botIds } = responses[keyword];
-          botIds.forEach(botId => {
+          botIds.forEach((botId) => {
             this.botRespond(message, timestamp, botId);
           });
         }
       });
-
-      this.scrollChatboxToBottom();
 
       event.preventDefault();
     } else {
@@ -111,27 +115,9 @@ const Home = class {
     }
   }
 
-  async fetchPokemonNames() {
-    const pokemonNames = [];
-    const requests = [];
-
-    for (let i = 1; i <= 50; i += 1) {
-      requests.push(axios.get(`https://pokeapi.co/api/v2/pokemon-species/${i}`));
-    }
-
-    const responses = await Promise.all(requests);
-
-    responses.forEach((response) => {
-      const pokemonName = response.data.names.find((name) => name.language.name === 'fr').name;
-      pokemonNames.push(pokemonName);
-    });
-
-    return pokemonNames;
-  }
-
-  botRespond(response, timestamp, botId) {
+  botRespond = (response, timestamp, botId) => {
     const chatboxValue = document.querySelector('.chatbox');
-    const botName = bots.find(bot => bot.id === botId).nom;
+    const botName = bots.find((bot) => bot.id === botId).nom;
     const botResponse = `
       <li class="botTurn">
         <h2 class="robot-name" style="font-size: 0.8rem;">${botName}</h2>
@@ -144,7 +130,7 @@ const Home = class {
     chatboxValue.innerHTML += botResponse;
 
     this.scrollChatboxToBottom();
-  }
+  };
 
   scrollChatboxToBottom() {
     const chatbox = document.querySelector('.chatbox');

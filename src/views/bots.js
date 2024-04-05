@@ -1,5 +1,5 @@
 const botItem = (data) => `
-  <div class="leftItem" id="${data.id}" onclick="selectChat(event)">
+  <div class="leftItem" id="${data.id}">
     <div class="left__robotContainer">
       <div class="robot-icon">
         <img src="${data.avatar}" alt="${data.name}">

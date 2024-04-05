@@ -45,6 +45,12 @@ module.exports = {
     extensions: ['.ts', '.js'],
   },
   devServer: {
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Headers": "Content-Type",
+      "Access-Control-Allow-Methods": "PUT, DELETE, PATCH, POST, OPTIONS",
+      "Access-Control-Allow-Credentials": true,
+    },
     historyApiFallback: true,
     host: '127.0.0.1',
     port: 9090,

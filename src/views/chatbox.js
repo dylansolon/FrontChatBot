@@ -2,7 +2,7 @@ const chatbox = (data) => `
 <section class="right" id="${data.id}">
   <div class="containerRight">
     <div class="containerRightTitle">
-      <h1>${data.name}</h1> <!-- Utilisation du nom du bot -->
+      <h1>Chatbox</h1>
     </div>
     <ul class="chatbox" id="chatbox">
       <!-- Messages seront ajoutés ici dynamiquement -->

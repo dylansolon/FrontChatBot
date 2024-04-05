@@ -1,15 +1,18 @@
-export default () => (`
-  <section class="right">
-      <div class="containerRight" id="conv1">
-            <div class="containerRightTitle">
-                <h1>Chatbot</h1>
-            </div>
-            <ul class="chatbox">
-            </ul>
-            <div class="containertextarea">
-                <textarea id="messageInput" placeholder="Write here..." type="text" class="input"></textarea>
-                <i id="sendButton" class="ri-send-plane-fill"></i>
-            </div>
-        </div>
-    </section>
-`);
+const chatbox = (data) => `
+<section class="right" id="${data.id}">
+  <div class="containerRight">
+    <div class="containerRightTitle">
+      <h1>${data.name}</h1> <!-- Utilisation du nom du bot -->
+    </div>
+    <ul class="chatbox" id="chatbox">
+      <!-- Messages seront ajoutés ici dynamiquement -->
+    </ul>
+    <div class="containertextarea">
+      <textarea id="messageInput" placeholder="Write here..." type="text" class="input"></textarea>
+      <i id="sendButton" class="ri-send-plane-fill"></i>
+    </div>
+  </div>
+</section>
+`;
+
+export default chatbox;

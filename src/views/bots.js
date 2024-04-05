@@ -1,14 +1,25 @@
-export default ({
-  id, img, nom, msg
-}) => (`
-  <div class="leftItem" id="${id}">
+const botItem = (data) => `
+  <div class="leftItem" id="${data.id}" onclick="selectChat(event)">
     <div class="left__robotContainer">
       <div class="robot-icon">
-        <img src="${img}" alt="${nom}">
+        <img src="${data.avatar}" alt="${data.name}">
       </div>
-      <h1>${nom}</h1>
+      <h1>${data.name}</h1>
     </div>
-    <p>${msg}</p>
-    <p>2min</p>
   </div>
-`);
+`;
+
+const bots = (data) => `
+  <section class="left">
+    <div class="bot-container">
+      <div class="search-bar">
+        <input type="text" placeholder="Search...">
+      </div>
+      <div class="bot-container">
+        ${data.map((bot) => botItem(bot)).join('')}
+      </div>
+    </div>
+  </section>
+`;
+
+export default bots;

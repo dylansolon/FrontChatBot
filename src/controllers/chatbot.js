@@ -17,11 +17,6 @@ class ChatBot {
     return response.data;
   }
 
-  async addMessagesData() {
-    const response = await axios.post('http://127.0.0.1/messages');
-    return response.data;
-  }
-
   async fetchBotsData() {
     const response = await axios.get('http://127.0.0.1/bots');
     return response.data;
@@ -31,26 +26,6 @@ class ChatBot {
     const response = await axios.get('http://127.0.0.1/user/1');
     return response.data;
   }
-
-  // async selectChat(event) {
-  //   const clickedItemId = event.target.id;
-
-  //   console.log(clickedItemId);
-
-  //   const messages = await this.fetchMessagesData();
-
-  //   console.log(messages);
-
-  //   const selectedMessage = messages.find(message => message.id === clickedItemId);
-
-  //   console.log(clickedItemId);
-
-  //   if (selectedMessage) {
-  //     return selectedMessage;
-  //   } else {
-  //     return null; // Return null if selectedMessage is not found
-  //   }
-  // }
 
   eventSendMessage() {
     const sendButton = document.querySelector('.ri-send-plane-fill');
@@ -90,12 +65,31 @@ class ChatBot {
       users
     };
     this.el.innerHTML = this.render(data);
+
+    // Récupérer la boîte de chat
+    const chatbox = document.querySelector('.chatbox');
+
+    // Afficher les messages dans la boîte de chat
+    messages.forEach(message => {
+      const messageHTML = `
+      <li class="${message.userId ? 'myTurn' : 'botTurn'}">
+        <h2 class="robot-name">${message.userId ? 'You' : message.botName}</h2>
+        <div class="message-container">
+          <span class="message">${message.text}</span>
+          <span class="timestamp">${message.date}</span>
+        </div>
+      </li>
+    `;
+
+      chatbox.innerHTML += messageHTML;
+    });
+
     this.eventSendMessage();
+    this.scrollChatboxToBottom();
   }
 
   async sendMessage(chatbox, messageInput) {
     const userMessage = messageInput.value.trim();
-    const messageId = Date.now();
 
     if (userMessage !== '') {
       const now = new Date();
@@ -103,9 +97,9 @@ class ChatBot {
     ${now.getDate()}/${now.getMonth() + 1}/${now.getFullYear()}`;
 
       const newMessage = `
-          <li class="myTurn" data-id="${messageId}>
+          <li class="myTurn">
             <div class="message-container">
-              <span class="message">${userMessage}</span>
+            <span class="message">${userMessage}</span>
               <span class="timestamp">${timestamp}</span>
             </div>
           </li>
@@ -115,15 +109,13 @@ class ChatBot {
       messageInput.value = '';
 
       await axios.post('http://127.0.0.1/messages', {
-        id: messageId,
         botId: null,
         userId: 1,
-        text: userMessage,
-        Date: timestamp
+        text: userMessage
       });
 
       const response = 'This is a simulated bot response.';
-      const botName = 'SampleBot';
+      const botName = 'hello world';
 
       const botResponse = `
         <li class="botTurn">
@@ -135,6 +127,12 @@ class ChatBot {
         </li>
       `;
       chatbox.innerHTML += botResponse;
+
+      await axios.post('http://127.0.0.1/messages', {
+        botId: 3,
+        userId: null,
+        text: response
+      });
 
       this.scrollChatboxToBottom();
     }

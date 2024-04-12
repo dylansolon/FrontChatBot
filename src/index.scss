@@ -157,7 +157,10 @@ main {
   padding: 10px 15px;
   border-radius: 20px;
   max-width: 70%;
+  word-wrap: break-word;
+  /* Ajout de cette propriété */
 }
+
 
 .botTurn .message {
   background-color: #e5e5ea;
@@ -194,6 +197,7 @@ main {
   border-radius: 10px;
   padding: 10px;
   height: 100%;
+  box-shadow: 0px 14px 50px -3px rgba(0,0,0,0.1);
 }
 
 .robot-name {
@@ -241,7 +245,7 @@ height: 100%;
   font-size: 0.95rem;
   resize: none;
   padding: 16px 15px 16px 0;
-  
+
 }
 
 .containertextarea i {
